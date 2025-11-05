@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DreamSpace – AI Interior Design Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>DreamSpace</h1>
+    <p>Upload a room → Choose a style → AI redesigns it.</p>
+  </header>
+
+  <main class="app-main">
+    <section class="controls-card">
+      <label class="input-label" for="apiKeyInput">Enter Your Stability API Key</label>
+      <div class="api-key-row">
+        <input type="password" id="apiKeyInput" placeholder="sk-xxxx..." class="api-input" autocomplete="off" />
+        <button id="saveKeyBtn" class="secondary-btn" type="button">Save Key</button>
+      </div>
+
+      <div class="upload-area" id="upload-area">
+        <input type="file" id="room-input" accept="image/*" hidden />
+        <div class="upload-content">
+          <p>Drag &amp; Drop or Click to Upload Room Photo</p>
+          <button type="button" id="browse-btn" class="secondary-btn">Browse Files</button>
+        </div>
+      </div>
+
+      <div class="preview" id="preview" hidden>
+        <img id="beforeImage" alt="Original room preview" />
+      </div>
+
+      <div class="style-selector">
+        <h2>Choose Style</h2>
+        <div class="style-buttons">
+          <button class="style-btn" type="button" data-style="minimalist living room, soft white, clean walls, light natural oak wood, open space decor">Minimalist</button>
+          <button class="style-btn" type="button" data-style="cozy Scandinavian interior, warm fabrics, soft light, natural wood">Cozy Scandinavian</button>
+          <button class="style-btn" type="button" data-style="Japandi calm interior, beige tones, low furniture, dry plants, zen decoration">Japandi Calm</button>
+          <button class="style-btn" type="button" data-style="luxury modern interior, marble textures, gold accents, premium furniture">Luxury Modern</button>
+          <button class="style-btn" type="button" data-style="cyberpunk neon interior, purple-blue neon, futuristic glowing ambience">Cyberpunk Neon</button>
+          <button class="style-btn" type="button" data-style="warm boho home, woven materials, plants, sun warm tones">Warm Boho Natural</button>
+        </div>
+      </div>
+
+      <button type="button" id="generateBtn" class="primary-btn">Redesign Room</button>
+      <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="results-card" id="results-card" hidden>
+      <h2>Before &amp; After</h2>
+
+      <div class="slider-wrapper">
+        <div class="before-image"><img id="before-img" alt="Original room" /></div>
+        <div class="after-image" id="after-image"><img id="after-img" alt="Redesigned room" /></div>
+        <input type="range" min="0" max="100" value="50" id="slider" aria-label="Compare redesigned room with original" />
+      </div>
+
+      <a id="downloadBtn" class="secondary-btn disabled" download="dreamspace_redesign.png" aria-disabled="true">Download Redesigned Image</a>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Powered by Stability AI</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
