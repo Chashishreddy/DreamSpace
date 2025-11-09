@@ -1,3 +1,7 @@
+## 🚀 Live Demo
+https://chashishreddy.github.io/DreamSpace/
+
+---
 # DreamSpace – AI Interior Design Visualizer
 
 DreamSpace redesigns real room photos using AI-powered image-to-image interior styling.
