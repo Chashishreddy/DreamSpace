@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="dreamspace-api-base-url" content="" />
+  <title>DreamSpace – AI Interior Design Visualizer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="app-header">
+      <div>
+        <h1>DreamSpace</h1>
+        <p class="subtitle">Transform your room photos into stunning interiors with AI.</p>
+      </div>
+      <a href="https://platform.stability.ai/account/keys" target="_blank" rel="noopener" class="link-btn">Get a Stability API key</a>
+    </header>
+
+    <main class="app-grid">
+      <section class="card controls-card">
+        <h2>1. Upload your room</h2>
+        <div id="dropZone" class="drop-zone" role="button" tabindex="0" aria-label="Upload room photo">
+          <input id="fileInput" type="file" accept="image/*" hidden />
+          <div class="drop-content">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16c.552 0 1-.448 1-1V5.414l2.293 2.293a1 1 0 0 0 1.414-1.414l-4-4a1 1 0 0 0-1.414 0l-4 4A1 1 0 1 0 8.707 7.707L11 5.414V15c0 .552.448 1 1 1z"/><path d="M5 19a1 1 0 0 1 1-1h12a1 1 0 0 1 0 2H6a1 1 0 0 1-1-1z"/></svg>
+            <p>Drag & drop an image or <span class="accent">browse</span></p>
+            <p class="hint">PNG or JPG up to 5 MB.</p>
+          </div>
+        </div>
+
+        <div class="preview" id="preview" hidden>
+          <img id="previewImage" alt="Uploaded room preview" />
+          <button class="ghost-btn" id="clearBtn">Remove photo</button>
+        </div>
+
+        <h2>2. Choose a style</h2>
+        <label class="sr-only" for="styleSelect">Select design style</label>
+        <select id="styleSelect" class="select">
+          <option value="" disabled selected>Select a style</option>
+          <option value="Minimalist">Minimalist</option>
+          <option value="Japandi">Japandi</option>
+          <option value="Cozy Scandinavian">Cozy Scandinavian</option>
+          <option value="Luxury Modern">Luxury Modern</option>
+          <option value="Cyberpunk Neon">Cyberpunk Neon</option>
+          <option value="Warm Boho">Warm Boho</option>
+        </select>
+
+        <button id="generateBtn" class="primary-btn" type="button">Generate redesign</button>
+        <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card results-card" id="resultsCard" hidden>
+        <div class="results-header">
+          <h2>Before &amp; After</h2>
+          <button id="downloadBtn" class="ghost-btn" type="button" disabled>Download redesign</button>
+        </div>
+        <div class="slider-wrapper" id="sliderWrapper" hidden>
+          <div class="image-stack">
+            <img id="beforeImage" alt="Original room" class="image-base" />
+            <div class="image-overlay" id="imageOverlay">
+              <img id="afterImage" alt="Redesigned room" />
+            </div>
+            <input type="range" id="slider" min="0" max="100" value="50" aria-label="Reveal redesigned image" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>© <span id="year"></span> DreamSpace. Secure AI interior makeovers.</p>
+    </footer>
+  </div>
+  <script src="app.js" type="module"></script>
+</body>
+</html>
